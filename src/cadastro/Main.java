@@ -10,7 +10,11 @@ import java.util.Scanner;
  * @author Rob Silva
  */
 public class Main {
-    
+    private static final int CADASTRO_PESSOA = 1;
+    private static final int CADASTRO_ENDERECO = 1;
+    private static final int EXIBIR_PESSOAS = 1;
+    private static final int EXIBIR_ENDERECOS = 1;
+    private static final int SAIR = 1;
     /**
      * Esse é o metodo principal que inicia o programa CadastroApp
      * 
@@ -31,16 +35,22 @@ public class Main {
             Tela.menuPrincipal();
             opcao = sc.nextInt();
             switch(opcao){
-                case 0: 
-                    System.out.println("Saindo do programa...");
-                    break;
-                case 1:
+                case CADASTRO_PESSOA: 
+                    
+                case CADASTRO_ENDERECO:
                     Tela.limpar();
                     Cadastro.add();
                     break;
-                case 2:
+                case EXIBIR_PESSOAS:
                     Tela.limpar();
                     Tela.exibirCadastrados();
+                    break;
+                case EXIBIR_ENDERECOS:
+                    Tela.limpar();
+                    Tela.exibirCadastrados();
+                    break;
+                case SAIR:
+                    System.out.println("Saindo do programa...");
                     break;
             }
             

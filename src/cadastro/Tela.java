@@ -33,7 +33,9 @@ public class Tela {
         System.out.println("\n\033[1;38;5;166m" +
                 "-------------- MENU ----------------\033[0m");
         System.out.println("[ 1 ] - Cadastrar pessoa");
-        System.out.println("[ 2 ] - Exibir pessoas cadastradas");
+        System.out.println("[ 2 ] - Cadastrar endereço");
+        System.out.println("[ 3 ] - Exibir pessoas cadastradas");
+        System.out.println("[ 4 ] - Exibir endereços cadastrados");
         System.out.println("\033[38;5;1m[ 0 ] - Sair\033[0m");
         System.out.print("\033[38;5;215m\nDigite uma opção: \033[0m");      
     }

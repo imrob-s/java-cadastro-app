@@ -7,9 +7,11 @@ import java.util.Scanner;
  */
 public class Cadastro {
     private static Scanner sc = new Scanner(System.in);
-    private static final int capacidade = 10;
-    public static String pessoas[][] = new String[capacidade][5];
-    private static int contador = 0;
+    private static final int capacidade = 5;
+    public static Pessoa pessoas[] = new Pessoa[capacidade];
+    public static Endereco enderecos[] = new Endereco[capacidade];
+    private static int contadorPessoa = 0;
+    private static int contadorEndereco = 0;
 
     /**
      * Adiciona uma nova pessoa ao cadastro.
@@ -18,27 +20,57 @@ public class Cadastro {
      * Se a capacidade máxima for atingida, reinicia o contador para permitir
      * novos cadastros.
      */
-    public static void add() {
-        if (contador < capacidade) {
+    public static void addPessoa() {
+        
+        if (contadorPessoa < capacidade) {
             System.out.print("Digite o nome: ");
-            pessoas[contador][0] = sc.next();
+            String nome = sc.next();
             System.out.print("Digite a idade: ");
-            pessoas[contador][1] = sc.next();
+            Integer idade = sc.nextInt();
             System.out.print("Digite o sexo: ");
-            pessoas[contador][2] = sc.next();
+            String sexo = sc.next();
             System.out.print("Digite a altura: ");
-            pessoas[contador][3] = sc.next();
-            System.out.print("Digite a cidade: ");
-            pessoas[contador][4] = sc.next();
-            if (!Utils.arrayPreenchida(pessoas[contador])) {
+            Double altura = sc.nextDouble();
+
+            if (pessoas[contadorPessoa] == null || pessoas[contadorPessoa].equals("")) {
                 System.out.println("TODOS OS CAMPOS PRECISAM SER PREENCHIDOS!");
                 System.out.println("PREENCHA O CADASTRO NOVAMENTE\n");
-                add();
+                addPessoa();
             }
-            contador++;
+            Pessoa pessoaCadastrar = new Pessoa(nome, idade, sexo, altura);
+            pessoas[contadorPessoa] = pessoaCadastrar;
+            contadorPessoa++;
         } else {
-            contador = 0;
-            add();
+            contadorPessoa = 0;
+            addPessoa();
+        }
+    }
+    
+    public static void addEndereco() {
+        
+        if (contadorEndereco < capacidade) {
+            System.out.print("Digite o rua: ");
+            String rua = sc.next();
+            System.out.print("Digite a numero: ");
+            Integer numero = sc.nextInt();
+            System.out.print("Digite o cep: ");
+            String cep = sc.next();
+            System.out.print("Digite a cidade: ");
+            String cidade = sc.next();
+            System.out.print("Digite a pais: ");
+            String pais = sc.next();
+
+            if (enderecos[contadorEndereco] == null || enderecos[contadorEndereco].equals("")) {
+                System.out.println("TODOS OS CAMPOS PRECISAM SER PREENCHIDOS!");
+                System.out.println("PREENCHA O CADASTRO NOVAMENTE\n");
+                addPessoa();
+            }
+            Endereco enderecoCadastrar = new Endereco(rua, numero, cep, cidade, pais);
+            enderecos[contadorEndereco] = enderecoCadastrar;
+            contadorEndereco++;
+        } else {
+            contadorEndereco = 0;
+            addPessoa();
         }
     }
 }

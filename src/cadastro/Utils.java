@@ -12,7 +12,7 @@ public class Utils {
      * @return true se todas as strings no array estão preenchidas; false, caso 
      * contrário.
      */
-    public static boolean arrayPreenchida(String[] pessoas) {
+    public static boolean arrayPreenchida(Pessoa[] pessoas) {
         for (String pessoa : pessoas) {
             if (pessoa == null || pessoa.isEmpty()){
                 return false;
