@@ -8,19 +8,21 @@ public class Endereco {
     public Integer numero;
     public String cep;
     public String cidade;
+    public String estado;
     public String pais;
-    public static final String[] COLUNAS = {"ID", "Rua", "Numero", "CEP", "Cidade", "Pais"};
+    public static final String[] COLUNAS = {"ID", "Rua", "Numero", "CEP", "Cidade", "Estado", "Pais"};
     public int[] larguras;
 
-    public Endereco(Integer id, String rua, Integer numero, String cep, String cidade, String pais) {
+    public Endereco(Integer id, String rua, Integer numero, String cep, String cidade, String estado, String pais) {
         this.id = id;
         this.rua = rua;
         this.numero = numero;
         this.cep = cep;
         this.cidade = cidade;
+        this.estado = estado;
         this.pais = pais;
         larguras = new int[]{id.toString().length(), rua.length(), numero.toString().length(), cep.length(),
-                cidade.toString().length(), pais.length()};
+                cidade.toString().length(), estado.length(), pais.length()};
     }
 
     public void mostrar(){
@@ -41,6 +43,8 @@ public class Endereco {
         System.out.printf("\033[38;05;234m\033[48;05;15m%-" + (larguras[4] + ESPACAMENTO)
                 + "s\033[0m", cidade);
         System.out.printf("\033[38;05;234m\033[48;05;15m%-" + (larguras[5] + ESPACAMENTO)
+                + "s\033[0m", estado);
+        System.out.printf("\033[38;05;234m\033[48;05;15m%-" + (larguras[6] + ESPACAMENTO)
                 + "s\033[0m", pais);
     }
 }

@@ -59,9 +59,9 @@ public class Cadastro {
     public static void addEndereco() {
         if (contadorEndereco < capacidade) {
             Integer id = contadorEndereco;
-            System.out.print("Digite o rua: ");
+            System.out.print("Digite a rua: ");
             String rua = sc.nextLine();
-            System.out.print("Digite a numero: ");
+            System.out.print("Digite o numero: ");
             Integer numero = null;
                     numero = sc.nextInt();
                     sc.nextLine();
@@ -69,7 +69,9 @@ public class Cadastro {
             String cep = sc.nextLine();
             System.out.print("Digite a cidade: ");
             String cidade = sc.nextLine();
-            System.out.print("Digite a pais: ");
+            System.out.print("Digite o estado: ");
+            String estado = sc.nextLine();
+            System.out.print("Digite o pais: ");
             String pais = sc.nextLine();
 
             if (rua.isEmpty() || numero == null ||
@@ -78,7 +80,7 @@ public class Cadastro {
                 System.out.println("PREENCHA O CADASTRO NOVAMENTE\n");
                 addEndereco();
             }
-            Endereco enderecoCadastrar = new Endereco(id, rua, numero, cep, cidade, pais);
+            Endereco enderecoCadastrar = new Endereco(id, rua, numero, cep, cidade, estado, pais);
             enderecos[contadorEndereco] = enderecoCadastrar;
             contadorEndereco++;
         } else {
