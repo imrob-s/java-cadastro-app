@@ -30,8 +30,7 @@ public class Cadastro {
             System.out.print("Digite o nome: ");
             String nome = sc.nextLine();
             System.out.print("Digite a idade: ");
-            Integer idade = null;
-                    idade = sc.nextInt();
+            Integer idade = sc.nextInt();
                     sc.nextLine();
             System.out.print("Digite o sexo: ");
             String sexo = sc.next();
@@ -62,8 +61,7 @@ public class Cadastro {
             System.out.print("Digite a rua: ");
             String rua = sc.nextLine();
             System.out.print("Digite o numero: ");
-            Integer numero = null;
-                    numero = sc.nextInt();
+            Integer numero = sc.nextInt();
                     sc.nextLine();
             System.out.print("Digite o cep: ");
             String cep = sc.nextLine();

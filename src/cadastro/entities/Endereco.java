@@ -22,7 +22,7 @@ public class Endereco {
         this.estado = estado;
         this.pais = pais;
         larguras = new int[]{id.toString().length(), rua.length(), numero.toString().length(), cep.length(),
-                cidade.toString().length(), estado.length(), pais.length()};
+                cidade.length(), estado.length(), pais.length()};
     }
 
     public void mostrar(){
