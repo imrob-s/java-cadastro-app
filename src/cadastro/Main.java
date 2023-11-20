@@ -11,10 +11,10 @@ import java.util.Scanner;
  */
 public class Main {
     private static final int CADASTRO_PESSOA = 1;
-    private static final int CADASTRO_ENDERECO = 1;
-    private static final int EXIBIR_PESSOAS = 1;
-    private static final int EXIBIR_ENDERECOS = 1;
-    private static final int SAIR = 1;
+    private static final int CADASTRO_ENDERECO = 2;
+    private static final int EXIBIR_PESSOAS = 3;
+    private static final int EXIBIR_ENDERECOS = 4;
+    private static final int SAIR = 0;
     /**
      * Esse é o metodo principal que inicia o programa CadastroApp
      * 
@@ -30,35 +30,38 @@ public class Main {
         
         Tela.limpar();
         Tela.intro();
-        
+
         do {
             Tela.menuPrincipal();
             opcao = sc.nextInt();
             switch(opcao){
-                case CADASTRO_PESSOA: 
-                    
+                case CADASTRO_PESSOA:
+                    Tela.limpar();
+                    Tela.titulo("cadastro de pessoas");
+                    Cadastro.addPessoa();
+                    break;
                 case CADASTRO_ENDERECO:
                     Tela.limpar();
-                    Cadastro.add();
+                    Tela.titulo("cadastro de enderecos");
+                    Cadastro.addEndereco();
                     break;
                 case EXIBIR_PESSOAS:
                     Tela.limpar();
-                    Tela.exibirCadastrados();
+                    Tela.exibirPessoas();
                     break;
                 case EXIBIR_ENDERECOS:
                     Tela.limpar();
-                    Tela.exibirCadastrados();
+                    Tela.exibirEnderecos();
                     break;
                 case SAIR:
                     System.out.println("Saindo do programa...");
                     break;
+                default:
+                    Tela.limpar();
+                    Tela.opcaoInvalida();
+                    Thread.sleep(2000);
             }
-            
-            
         } while (opcao != 0);
-        
-        
         sc.close();
     }
-    
 }
