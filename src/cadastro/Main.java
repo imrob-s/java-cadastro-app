@@ -5,9 +5,11 @@ import java.util.Scanner;
 
 /**
  * A classe Main é responsável por iniciar o programa de cadastro de pessoas.
- * O programa oferece um menu principal com opções para adicionar pessoas ao cadastro
- * e exibir as pessoas cadastradas em uma tabela.
+ * O programa oferece um menu principal com opções para adicionar pessoas e endereços ao cadastro
+ * e exibir as informações cadastradas em uma tabela.
  * @author Rob Silva
+ * @version 1.1
+ * @since 2023-11-11
  */
 public class Main {
     private static final int CADASTRO_PESSOA = 1;

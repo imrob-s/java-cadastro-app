@@ -2,6 +2,10 @@ package cadastro.entities;
 
 import cadastro.Tabela;
 
+/**
+ * Essa classe modela a entidade Endereço e pussui os atributos id, rua, numero, cep, cidade, estado, pais.
+ * também é possivel exibir na tela as informações de um objeto instanciado através do metodo mostrar().
+ */
 public class Endereco {
     public Integer id;
     public String rua;
@@ -25,7 +29,10 @@ public class Endereco {
                 cidade.length(), estado.length(), pais.length()};
     }
 
-    public void mostrar(){
+    /**
+     * Esse método exibe na tela as informações do endereço instanciado.
+     */
+    public void mostrar() {
         final int ESPACAMENTO = 2;
         for (int i = 0; i < COLUNAS.length; i++) {
             if (larguras[i] < Tabela.largurasEnderecos[i]) {

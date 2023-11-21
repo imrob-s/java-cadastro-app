@@ -11,7 +11,9 @@ import java.util.Scanner;
  */
 public class Cadastro {
     private static final Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+    // Capacidade total de dados que podem ser inseridas nos vetores pessoas e endereços.
     private static final int capacidade = 5;
+    // Os dados cadastrados serão armazenados nos arrays pessoas e enderecos.
     public static Pessoa[] pessoas = new Pessoa[capacidade];
     public static Endereco[] enderecos = new Endereco[capacidade];
     private static int contadorPessoa = 0;
@@ -31,7 +33,7 @@ public class Cadastro {
             String nome = sc.nextLine();
             System.out.print("Digite a idade: ");
             Integer idade = sc.nextInt();
-                    sc.nextLine();
+            sc.nextLine();
             System.out.print("Digite o sexo: ");
             String sexo = sc.next();
             System.out.print("Digite a altura: ");
@@ -39,9 +41,9 @@ public class Cadastro {
             sc.nextLine();
 
             if (nome.isEmpty() ||
-                idade == null ||
-                sexo.isEmpty() ||
-                altura == null) {
+                    idade == null ||
+                    sexo.isEmpty() ||
+                    altura == null) {
                 System.out.println("TODOS OS CAMPOS PRECISAM SER PREENCHIDOS!");
                 System.out.println("PREENCHA O CADASTRO NOVAMENTE\n");
                 addPessoa();
@@ -54,7 +56,14 @@ public class Cadastro {
             addPessoa();
         }
     }
-    
+
+    /**
+     * Adiciona um novo endereço ao cadastro.
+     * Solicita ao usuário informações como rua, numero, cep, cidade, estado e pais.
+     * Verifica se todos os campos foram preenchidos antes de adicionar a pessoa.
+     * Se a capacidade máxima for atingida, reinicia o contador para permitir
+     * novos cadastros assim o cadastro mais antigo será sobreescrito pelo mais novo.
+     */
     public static void addEndereco() {
         if (contadorEndereco < capacidade) {
             Integer id = contadorEndereco;
@@ -62,7 +71,7 @@ public class Cadastro {
             String rua = sc.nextLine();
             System.out.print("Digite o numero: ");
             Integer numero = sc.nextInt();
-                    sc.nextLine();
+            sc.nextLine();
             System.out.print("Digite o cep: ");
             String cep = sc.nextLine();
             System.out.print("Digite a cidade: ");
