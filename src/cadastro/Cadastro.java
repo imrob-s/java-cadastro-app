@@ -10,7 +10,7 @@ import java.util.Scanner;
  * A classe Cadastro é responsável por gerenciar um cadastro de pessoas.
  */
 public class Cadastro {
-    private static final Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+    private static final Scanner sc = new Scanner(System.in).useLocale(Locale.US).useDelimiter("\n");
     // Capacidade total de dados que podem ser inseridas nos vetores pessoas e endereços.
     private static final int capacidade = 5;
     // Os dados cadastrados serão armazenados nos arrays pessoas e enderecos.
@@ -94,5 +94,108 @@ public class Cadastro {
             contadorEndereco = 0;
             addEndereco();
         }
+    }
+
+    public static void updatePessoa() {
+        System.out.println("Digite o ID do cadastro: ");
+        int id = sc.nextInt();
+        System.out.print("Qual campo gostaria de atualizar?\n");
+        System.out.println("Nome, Idade, Sexo ou Altura? Digite: ");
+        String campo = sc.next().toLowerCase();
+
+        for (int i = 0; i < pessoas.length; i++) {
+            if (pessoas[i] != null && pessoas[i].id == id) {
+            switch (campo) {
+                case "nome":
+                System.out.println("Digite o nome: ");
+                String nome = sc.next();
+                    pessoas[i].nome = nome;
+                    break;
+                case "idade":
+                    System.out.println("Digite a idade: ");
+                    pessoas[i].idade = sc.nextInt();
+                    break;
+                case "sexo":
+                    System.out.println("Digite o sexo: ");
+                    pessoas[i].sexo = sc.nextLine();
+                    break;
+                case "altura":
+                    System.out.println("Digite o altura: ");
+                    pessoas[i].altura = sc.nextDouble();
+                    break;
+                default:
+                    System.out.println("O campo informado não existe.");
+                    break;
+            }
+        } else {
+            System.out.println("ID da pessoa não encontrado");
+        }
+        break;
+    }
+
+    }
+
+    public static void updateEndereco() {
+        System.out.println("Digite o ID do cadastro: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Qual campo gostaria de atualizar?\n");
+        System.out.println("Nome, Idade, Sexo ou Altura? Digite: ");
+        String campo = sc.next().toLowerCase();
+
+        for (int i = 0; i < pessoas.length; i++) {
+            if (pessoas[i] != null && pessoas[i].id == id) {
+            switch (campo) {
+                case "nome":
+                    System.out.println("Digite o nome: ");
+                    String nome = sc.nextLine();
+                    pessoas[i].nome = nome;
+                    break;
+                case "idade":
+                    System.out.println("Digite a idade: ");
+                    pessoas[i].idade = sc.nextInt();
+                    break;
+                case "sexo":
+                    System.out.println("Digite o sexo: ");
+                    pessoas[i].sexo = sc.nextLine();
+                    break;
+                case "altura":
+                    System.out.println("Digite o altura: ");
+                    pessoas[i].altura = sc.nextDouble();
+                    break;
+                default:
+                    System.out.println("O campo informado não existe.");
+                    break;
+            }
+        } else {
+            System.out.println("ID da pessoa não encontrado");
+        }
+        break;
+    }
+
+    }
+
+    public static void deletePessoa() {
+        System.out.println("Digite o ID do cadastro: ");
+        int id = sc.nextInt();
+        for (int i = 0; i < pessoas.length; i++) {
+        if (pessoas[i] != null && pessoas[i].id == id) {
+            pessoas[i] = null;
+        } else {
+            System.out.println("ID da pessoa não encontrado");
+        }
+    }
+    }
+
+    public static void deleteEndereco() {
+        System.out.println("Digite o ID do cadastro: ");
+        int id = sc.nextInt();
+        for (int i = 0; i < enderecos.length; i++) {
+        if (enderecos[i] != null && enderecos[i].id == id) {
+            enderecos[i] = null;
+        } else {
+            System.out.println("ID da pessoa não encontrado");
+        }
+    }
     }
 }

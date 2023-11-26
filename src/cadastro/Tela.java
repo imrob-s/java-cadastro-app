@@ -1,6 +1,8 @@
 package cadastro;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.Scanner;
 
 /**
  * A classe Tela contém métodos para exibir informações no terminal, como
@@ -11,6 +13,12 @@ import java.io.IOException;
  * @author Rob Silva
  */
 public class Tela {
+    private static final int NOVO = 1;
+    private static final int ATUALIZAR = 2;
+    private static final int APAGAR = 3;
+    private static final int VOLTAR = 0;
+
+    private static final Scanner sc = new Scanner(System.in).useLocale(Locale.US);
 
     /**
      * Apresenta uma mensagem de introdução colorida no terminal.
@@ -55,6 +63,25 @@ public class Tela {
      */
     public static void exibirPessoas() {
         Tabela.exibirPessoas(Cadastro.pessoas);
+        menuHistorico();
+        int opcao = sc.nextInt();
+        switch (opcao) {
+            case NOVO:
+                Cadastro.addPessoa();
+                break;
+            case ATUALIZAR:
+                Cadastro.updatePessoa();
+                break;
+            case APAGAR:
+                Cadastro.deletePessoa();
+                break;
+            case VOLTAR:
+                break;
+            default:
+                break;
+        }
+        
+    
     }
 
     /**
@@ -64,6 +91,18 @@ public class Tela {
     public static void exibirEnderecos() {
         Tabela.exibirEnderecos(Cadastro.enderecos);
     }
+
+    public static void menuHistorico(){
+        System.out.println("\n\033[1;38;5;166m" +
+                "-------------- MENU ----------------\033[0m");
+        System.out.println("[ 1 ] - Novo cadastro");
+        System.out.println("[ 2 ] - Atualizar cadastro");
+        System.out.println("[ 3 ] - Apagar cadastro");
+        System.out.println("\033[38;5;1m[ 0 ] - Voltar\033[0m");
+        System.out.print("\033[38;5;215m\nDigite uma opção: \033[0m");
+    }
+
+    
 
     /**
      * Exibe um titulo personalizado.

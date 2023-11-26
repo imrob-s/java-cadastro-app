@@ -12,6 +12,7 @@ public class Pessoa {
     public Integer idade;
     public String sexo;
     public Double altura;
+    public Endereco endereco;
     public static final String[] COLUNAS = {"ID", "Nome", "Idade", "Sexo", "Altura"};
     public int[] larguras;
 
