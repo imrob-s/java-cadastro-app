@@ -1,7 +1,6 @@
 package cadastro;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
  * A classe CadastroApp é responsável por iniciar o programa de cadastro de pessoas.
@@ -23,7 +22,7 @@ public class CadastroApp {
      *                              do metodo ConsoleUI.limpar()
      */
     public static void main(String[] args) throws IOException, InterruptedException {
-        boolean sair = false;
+        boolean sair;
         ConsoleUI.limpar();
         Menu.intro();
 

@@ -3,9 +3,6 @@ package cadastro;
 import cadastro.entities.Endereco;
 import cadastro.entities.Pessoa;
 
-import java.util.Locale;
-import java.util.Scanner;
-
 /**
  * A classe CadastroManager é responsável por gerenciar um cadastro de pessoas.
  */
@@ -14,8 +11,8 @@ public class CadastroManager {
     // Capacidade total de dados que podem ser inseridas nos vetores pessoas e endereços.
     private static final int capacidade = 8;
     // Os dados cadastrados serão armazenados nos arrays pessoas e enderecos.
-    private static Pessoa[] pessoas = new Pessoa[capacidade];
-    private static Endereco[] enderecos = new Endereco[capacidade];
+    private static final Pessoa[] pessoas = new Pessoa[capacidade];
+    private static final Endereco[] enderecos = new Endereco[capacidade];
     private static int contadorPessoa = 4;
     private static int contadorEndereco = 4;
     static {

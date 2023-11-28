@@ -7,7 +7,7 @@ import cadastro.TabelaPrinter;
  * também é possivel exibir na tela as informações de um objeto instanciado através do metodo mostrar().
  */
 public class Endereco {
-    private Integer id;
+    private final Integer id;
     private String rua;
     private Integer numero;
     private String cep;
@@ -59,48 +59,24 @@ public class Endereco {
         return id;
     }
 
-    public String getRua() {
-        return rua;
-    }
-
     public void setRua(String rua) {
         this.rua = rua;
-    }
-
-    public Integer getNumero() {
-        return numero;
     }
 
     public void setNumero(Integer numero) {
         this.numero = numero;
     }
 
-    public String getCep() {
-        return cep;
-    }
-
     public void setCep(String cep) {
         this.cep = cep;
-    }
-
-    public String getCidade() {
-        return cidade;
     }
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
     public void setEstado(String estado) {
         this.estado = estado;
-    }
-
-    public String getPais() {
-        return pais;
     }
 
     public void setPais(String pais) {

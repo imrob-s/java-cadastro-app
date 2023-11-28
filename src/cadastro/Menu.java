@@ -8,11 +8,6 @@ package cadastro;
  * @author Rob Silva
  */
 public class Menu {
-    private static final int NOVO = 1;
-    private static final int ATUALIZAR = 2;
-    private static final int APAGAR = 3;
-    private static final int VOLTAR = 0;
-
     /**
      * Apresenta uma mensagem de introdução colorida no terminal.
      * Utilizado codigo ANSI para estilização de cores

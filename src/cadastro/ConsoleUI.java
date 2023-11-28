@@ -84,10 +84,7 @@ public class ConsoleUI {
         System.out.print("Digite a altura: ");
         Double altura = sc.nextDouble();
 
-        if (nome.isEmpty() ||
-                idade == null ||
-                sexo.isEmpty() ||
-                altura == null) {
+        if (nome.isEmpty() || sexo.isEmpty()) {
             System.out.println("TODOS OS CAMPOS PRECISAM SER PREENCHIDOS!");
             System.out.println("PREENCHA O CADASTRO NOVAMENTE\n");
             cadastrarPessoa();
@@ -109,8 +106,7 @@ public class ConsoleUI {
         System.out.print("Digite o pais: ");
         String pais = sc.next();
 
-        if (rua.isEmpty() || numero == null ||
-                cep.isEmpty() || cidade.isEmpty() || pais.isEmpty()) {
+        if (rua.isEmpty() || cep.isEmpty() || cidade.isEmpty() || pais.isEmpty()) {
             System.out.println("TODOS OS CAMPOS PRECISAM SER PREENCHIDOS!");
             System.out.println("PREENCHA O CADASTRO NOVAMENTE\n");
             cadastrarEndereco();

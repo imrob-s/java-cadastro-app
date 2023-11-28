@@ -7,14 +7,11 @@ import cadastro.TabelaPrinter;
  * também é possivel exibir na tela as informações de um objeto instanciado através do metodo mostrar()
  */
 public class Pessoa {
-    private Integer id;
+    private final Integer id;
     private String nome;
     private Integer idade;
     private String sexo;
     private Double altura;
-
-
-    private Endereco endereco;
     public static final String[] COLUNAS = {"ID", "Nome", "Idade", "Sexo", "Altura"};
     public int[] larguras;
 
@@ -53,32 +50,18 @@ public class Pessoa {
         return id;
     }
 
-    public String getNome() {
-        return nome;
-    }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public Integer getIdade() {
-        return idade;
-    }
 
     public void setIdade(Integer idade) {
         this.idade = idade;
     }
 
-    public String getSexo() {
-        return sexo;
-    }
-
     public void setSexo(String sexo) {
         this.sexo = sexo;
-    }
-
-    public Double getAltura() {
-        return altura;
     }
 
     public void setAltura(Double altura) {
