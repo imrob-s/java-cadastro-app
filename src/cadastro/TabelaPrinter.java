@@ -8,7 +8,7 @@ import cadastro.entities.Pessoa;
  * no terminal.
  * A largura das colunas são calculadas a partir da string mais larga de uma posição do vetor.
  */
-public class Tabela {
+public class TabelaPrinter {
     public static int[] largurasPessoas = new int[Pessoa.COLUNAS.length];
     public static int[] largurasEnderecos = new int[Endereco.COLUNAS.length];
     private static final int ESPACAMENTO = 2;

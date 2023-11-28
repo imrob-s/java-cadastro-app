@@ -1,19 +1,19 @@
 package cadastro.entities;
 
-import cadastro.Tabela;
+import cadastro.TabelaPrinter;
 
 /**
  * Essa classe modela a entidade Endereço e pussui os atributos id, rua, numero, cep, cidade, estado, pais.
  * também é possivel exibir na tela as informações de um objeto instanciado através do metodo mostrar().
  */
 public class Endereco {
-    public Integer id;
-    public String rua;
-    public Integer numero;
-    public String cep;
-    public String cidade;
-    public String estado;
-    public String pais;
+    private Integer id;
+    private String rua;
+    private Integer numero;
+    private String cep;
+    private String cidade;
+    private String estado;
+    private String pais;
     public static final String[] COLUNAS = {"ID", "Rua", "Numero", "CEP", "Cidade", "Estado", "Pais"};
     public int[] larguras;
 
@@ -35,8 +35,8 @@ public class Endereco {
     public void mostrar() {
         final int ESPACAMENTO = 2;
         for (int i = 0; i < COLUNAS.length; i++) {
-            if (larguras[i] < Tabela.largurasEnderecos[i]) {
-                larguras[i] = Tabela.largurasEnderecos[i];
+            if (larguras[i] < TabelaPrinter.largurasEnderecos[i]) {
+                larguras[i] = TabelaPrinter.largurasEnderecos[i];
             }
         }
         System.out.printf("\033[38;05;234m\033[48;05;15m%-" + (larguras[0] + ESPACAMENTO)
@@ -53,5 +53,57 @@ public class Endereco {
                 + "s\033[0m", estado);
         System.out.printf("\033[38;05;234m\033[48;05;15m%-" + (larguras[6] + ESPACAMENTO)
                 + "s\033[0m", pais);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
     }
 }
