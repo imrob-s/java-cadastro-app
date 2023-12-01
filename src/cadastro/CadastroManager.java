@@ -28,21 +28,30 @@ public class CadastroManager {
         enderecos[2] = new Endereco(2, "Rua Dois", 789, "54321-876", "Rio Claro", "SP", "Brasil");
         enderecos[3] = new Endereco(3, "Rua Onze", 987, "87654-321", "Sao Paulo", "SP", "Brasil");
     }
-
+    /**
+     * Obtém a lista de pessoas cadastradas.
+     *
+     * @return Um array contendo as pessoas cadastradas.
+     */
     public static Pessoa[] getPessoas() {
         return pessoas;
     }
-
+    /**
+     * Obtém a lista de endereços cadastrados.
+     *
+     * @return Um array contendo os endereços cadastrados.
+     */
     public static Endereco[] getEnderecos() {
         return enderecos;
     }
 
     /**
      * Adiciona uma nova pessoa ao cadastro.
-     * Solicita ao usuário informações como nome, idade, sexo, e altura.
-     * Verifica se todos os campos sejam preenchidos antes de adicionar a pessoa.
-     * Se a capacidade máxima for atingida, reinicia o contador para permitir
-     * novos cadastros.
+     *
+     * @param nome   O nome da pessoa.
+     * @param idade  A idade da pessoa.
+     * @param sexo   O sexo da pessoa ('M' para masculino, 'F' para feminino).
+     * @param altura A altura da pessoa.
      */
     public static void addPessoa(String nome, Integer idade, Character sexo, Double altura) {
 
@@ -74,10 +83,13 @@ public class CadastroManager {
 
     /**
      * Adiciona um novo endereço ao cadastro.
-     * Solicita ao usuário informações como rua, numero, cep, cidade, estado e pais.
-     * Verifica se todos os campos foram preenchidos antes de adicionar a pessoa.
-     * Se a capacidade máxima for atingida, reinicia o contador para permitir
-     * novos cadastros assim o cadastro mais antigo será sobreescrito pelo mais novo.
+     *
+     * @param rua    O nome da rua.
+     * @param numero O número do endereço.
+     * @param cep    O CEP do endereço.
+     * @param cidade O nome da cidade.
+     * @param estado O estado do endereço.
+     * @param pais   O país do endereço.
      */
     public static void addEndereco(String rua, Integer numero, String cep, String cidade, String estado, String pais) {
         int id;
@@ -101,7 +113,13 @@ public class CadastroManager {
             }
         }
     }
-
+    /**
+     * Atualiza informações de uma pessoa no cadastro.
+     *
+     * @param id        O ID da pessoa a ser atualizada.
+     * @param campo     O campo a ser atualizado ('nome', 'idade', 'sexo' ou 'altura').
+     * @param novoValor O novo valor a ser atribuído ao campo.
+     */
     public static void updatePessoa(int id, String campo, String novoValor) {
         for (Pessoa pessoa : pessoas) {
             if (pessoa != null && pessoa.getId() == id) {
@@ -121,7 +139,13 @@ public class CadastroManager {
         }
         System.out.println("ID da pessoa não encontrado");
     }
-
+    /**
+     * Atualiza informações de um endereço no cadastro.
+     *
+     * @param id        O ID do endereço a ser atualizado.
+     * @param campo     O campo a ser atualizado ('rua', 'numero', 'cep', 'cidade', 'estado' ou 'pais').
+     * @param novoValor O novo valor a ser atribuído ao campo.
+     */
     public static void updateEndereco(int id, String campo, String novoValor) {
         for (Endereco endereco : enderecos) {
             if (endereco != null && endereco.getId() == id) {
@@ -144,7 +168,11 @@ public class CadastroManager {
         System.out.println("ID do endereço não encontrado");
 
     }
-
+    /**
+     * Exclui uma pessoa do cadastro.
+     *
+     * @param id O ID da pessoa a ser excluída.
+     */
     public static void deletePessoa(int id) {
         for (int i = 0; i < enderecos.length; i++) {
             if (pessoas[i] != null && pessoas[i].getId() == id) {
@@ -153,7 +181,11 @@ public class CadastroManager {
             }
         }
     }
-
+    /**
+     * Exclui um endereço do cadastro.
+     *
+     * @param id O ID do endereço a ser excluído.
+     */
     public static void deleteEndereco(int id) {
         for (int i = 0; i < enderecos.length; i++) {
             if (enderecos[i] != null && enderecos[i].getId() == id) {

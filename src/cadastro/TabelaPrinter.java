@@ -4,14 +4,26 @@ import cadastro.entities.Endereco;
 import cadastro.entities.Pessoa;
 
 /**
- * Essa classe formata um vetor com informações para ser exibido como uma tabela estilizada
+ * Esta classe formata um vetor com informações para ser exibido como uma tabela estilizada
  * no terminal.
- * A largura das colunas são calculadas a partir da string mais larga de uma posição do vetor.
+ * A largura das colunas é calculada a partir da string mais larga de uma posição do vetor.
  */
 public class TabelaPrinter {
+    /**
+     * Vetor que armazena a largura das colunas para o tipo de dado Pessoa.
+     */
     public static int[] larguraColPessoa = new int[Pessoa.COLUNAS.length];
+    /**
+     * Vetor que armazena a largura das colunas para o tipo de dado Endereco.
+     */
     public static int[] larguraColEndereco = new int[Endereco.COLUNAS.length];
+    /**
+     * Espaçamento entre as colunas na tabela.
+     */
     private static final int ESPACAMENTO = 2;
+    /*
+     * Códigos ANSI para cor do texto e do fundo.
+     */
     private static final String COR_TEXTO = "\033[1;38;05;231m"; // Branco
     private static final String COR_FUNDO = "\033[48;05;243m"; // Cinza
     private static final String RESET_COR = "\033[0m";
@@ -19,7 +31,7 @@ public class TabelaPrinter {
     /**
      * Exibe na tela uma tabela com as informações de um array do tipo Pessoa.
      *
-     * @param pessoas Inserir no argumento um array do tipo Pessoa.
+     * @param pessoas Um array do tipo Pessoa.
      */
     public static void exibirPessoas(Pessoa[] pessoas) {
         final String[] colunas = Pessoa.COLUNAS;
@@ -72,7 +84,7 @@ public class TabelaPrinter {
     /**
      * Exibe na tela uma tabela com as informações de um array do tipo Endereco.
      *
-     * @param enderecos Inserir no argumento um array do tipo Endereco.
+     * @param enderecos Um array do tipo Endereco.
      */
     public static void exibirEnderecos(Endereco[] enderecos) {
         final String[] colunas = Endereco.COLUNAS;

@@ -5,7 +5,6 @@ import java.io.IOException;
 /**
  * A classe Menu contém métodos para exibir informações no terminal, como
  * mensagens de introdução, menu principal, opção invalida e titulos.
- * Além disso, possui um método para limpar o conteúdo do terminal/tela.
  *
  * @author Rob Silva
  */
@@ -40,6 +39,9 @@ public class Menu {
     }
     /**
      * Exibe o menu principal do aplicativo CadastroApp.
+     *
+     * @throws IOException          Exceção lançada em caso de erro durante a interação.
+     * @throws InterruptedException Exceção lançada em caso de erro durante a interação.
      */
     public static void principal() throws IOException, InterruptedException {
         ConsoleUI.limpar();
@@ -52,6 +54,9 @@ public class Menu {
         System.out.printf("%s[ 0 ] - Sair%s", CT_VERMELHO, RESET_COR);
         System.out.printf("%s\n\nDigite uma opção: %s", CT_LARANJA_CLARO, RESET_COR);
     }
+    /**
+     * Exibe um menu CRUD (Criar, Ler, Atualizar, Excluir) para interação com o usuário.
+     */
     public static void menuCRUD(){
         System.out.println("\n\033[1;38;5;166m" +
                 "---------- MENU CADASTRO --------\033[0m");
@@ -62,18 +67,27 @@ public class Menu {
         System.out.printf("%s\nDigite uma opção: %s", CT_LARANJA_CLARO, RESET_COR);
     }
     /**
-     * Exibe um titulo personalizado.
+     * Exibe um título personalizado.
      *
-     * @param texto Escreva um titulo para ser exibido na tela.
+     * @param texto O texto a ser exibido como título.
      */
     public static void titulo(String texto) {
         System.out.printf("%s%s     %s     %s\n",CT_BRANCO, CF_CINZA, texto.toUpperCase(), RESET_COR);
     }
+    /**
+     * Exibe uma mensagem de erro no formato padrão.
+     *
+     * @param texto O texto da mensagem de erro.
+     */
     public static void erro(String texto) {
         System.out.printf("%s     %s      %s\n", COR_ERRO, texto.toUpperCase(), RESET_COR);
     }
+    /**
+     * Exibe uma mensagem de sucesso no formato padrão.
+     *
+     * @param texto O texto da mensagem de sucesso.
+     */
     public static void sucesso(String texto) {
         System.out.printf("%s     %s     %s\n", COR_SUCESSO, texto.toUpperCase(), RESET_COR);
     }
-
 }
