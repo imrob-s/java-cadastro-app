@@ -10,18 +10,21 @@ public class Pessoa {
     private final Integer id;
     private String nome;
     private Integer idade;
-    private String sexo;
+    private char sexo;
     private Double altura;
     public static final String[] COLUNAS = {"ID", "Nome", "Idade", "Sexo", "Altura"};
     public int[] larguras;
+    private static final String COR_TEXTO = "\033[38;05;234m"; // Preto
+    private static final String COR_FUNDO = "\033[48;05;15m"; // Cinza Claro
+    private static final String RESET_COR = "\033[0m";
 
-    public Pessoa(Integer id, String nome, Integer idade, String sexo, Double altura) {
+    public Pessoa(Integer id, String nome, Integer idade, Character sexo, Double altura) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
         this.sexo = sexo;
         this.altura = altura;
-        larguras = new int[]{id.toString().length(), nome.length(), idade.toString().length(), sexo.length(),
+        larguras = new int[]{id.toString().length(), nome.length(), idade.toString().length(), sexo.toString().length(),
                 altura.toString().length()};
     }
 
@@ -31,36 +34,30 @@ public class Pessoa {
     public void mostrar() {
         final int ESPACAMENTO = 2;
         for (int i = 0; i < COLUNAS.length; i++) {
-            if (larguras[i] < TabelaPrinter.largurasPessoas[i]) {
-                larguras[i] = TabelaPrinter.largurasPessoas[i];
+            if (larguras[i] < TabelaPrinter.larguraColPessoa[i]) {
+                larguras[i] = TabelaPrinter.larguraColPessoa[i];
             }
         }
-        System.out.printf("\033[38;05;234m\033[48;05;15m%-" + (larguras[0] + ESPACAMENTO)
-                + "s\033[0m", id);
-        System.out.printf("\033[38;05;234m\033[48;05;15m%-" + (larguras[1] + ESPACAMENTO)
-                + "s\033[0m", nome);
-        System.out.printf("\033[38;05;234m\033[48;05;15m%-" + (larguras[2] + ESPACAMENTO)
-                + "s\033[0m", idade);
-        System.out.printf("\033[38;05;234m\033[48;05;15m%-" + (larguras[3] + ESPACAMENTO)
-                + "s\033[0m", sexo);
-        System.out.printf("\033[38;05;234m\033[48;05;15m%-" + (larguras[4] + ESPACAMENTO)
-                + ".2f\033[0m", altura);
+        System.out.printf("%s%s%-" + (larguras[0] + ESPACAMENTO) + "s%s", COR_TEXTO, COR_FUNDO, id, RESET_COR);
+        System.out.printf("%s%s%-" + (larguras[1] + ESPACAMENTO) + "s%s", COR_TEXTO, COR_FUNDO, nome, RESET_COR);
+        System.out.printf("%s%s%-" + (larguras[2] + ESPACAMENTO) + "s%s", COR_TEXTO, COR_FUNDO, idade, RESET_COR);
+        System.out.printf("%s%s%-" + (larguras[3] + ESPACAMENTO) + "s%s", COR_TEXTO, COR_FUNDO, sexo, RESET_COR);
+        System.out.printf("%s%s%-" + (larguras[4] + ESPACAMENTO) + ".2f%s", COR_TEXTO, COR_FUNDO, altura, RESET_COR);
     }
+
     public Integer getId() {
         return id;
     }
-
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-
     public void setIdade(Integer idade) {
         this.idade = idade;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(Character sexo) {
         this.sexo = sexo;
     }
 
@@ -68,4 +65,7 @@ public class Pessoa {
         this.altura = altura;
     }
 
+    public String getNome() {
+        return nome;
+    }
 }

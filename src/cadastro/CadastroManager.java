@@ -15,17 +15,18 @@ public class CadastroManager {
     private static final Endereco[] enderecos = new Endereco[capacidade];
     private static int contadorPessoa = 4;
     private static int contadorEndereco = 4;
-    static {
-        // Inicializando alguns dados fictícios
-        pessoas[0] = new Pessoa(0, "João", 25, "Masculino", 1.75);
-        pessoas[1] = new Pessoa(1, "Maria", 30, "Feminino", 1.65);
-        pessoas[2] = new Pessoa(2, "Carlos", 40, "Masculino", 1.80);
-        pessoas[3] = new Pessoa(3, "Ana", 28, "Feminino", 1.60);
 
-        enderecos[0] = new Endereco(0, "Rua A", 123, "12345-678", "Cidade A", "Estado A", "Pais A");
-        enderecos[1] = new Endereco(1, "Rua B", 456, "98765-432", "Cidade B", "Estado B", "Pais B");
-        enderecos[2] = new Endereco(2, "Rua C", 789, "54321-876", "Cidade C", "Estado C", "Pais C");
-        enderecos[3] = new Endereco(3, "Rua D", 987, "87654-321", "Cidade D", "Estado D", "Pais D");
+    static {
+        // Inserindo no banco de dados alguns dados fictícios
+        pessoas[0] = new Pessoa(0, "João", 25, 'M', 1.75);
+        pessoas[1] = new Pessoa(1, "Maria", 30, 'F', 1.65);
+        pessoas[2] = new Pessoa(2, "Carlos", 40, 'M', 1.80);
+        pessoas[3] = new Pessoa(3, "Ana", 28, 'F', 1.60);
+
+        enderecos[0] = new Endereco(0, "Rua Treze", 123, "12345-678", "Limeira", "SP", "Brasil");
+        enderecos[1] = new Endereco(1, "Rua Vinte", 456, "98765-432", "Americana", "SP", "Brasil");
+        enderecos[2] = new Endereco(2, "Rua Dois", 789, "54321-876", "Rio Claro", "SP", "Brasil");
+        enderecos[3] = new Endereco(3, "Rua Onze", 987, "87654-321", "Sao Paulo", "SP", "Brasil");
     }
 
     public static Pessoa[] getPessoas() {
@@ -43,15 +44,31 @@ public class CadastroManager {
      * Se a capacidade máxima for atingida, reinicia o contador para permitir
      * novos cadastros.
      */
-    public static void addPessoa(String nome, Integer idade, String sexo, Double altura) {
+    public static void addPessoa(String nome, Integer idade, Character sexo, Double altura) {
+
+        int id;
         if (contadorPessoa < capacidade) {
-            Integer id = contadorPessoa;
-            Pessoa pessoaCadastrar = new Pessoa(id, nome, idade, sexo, altura);
-            pessoas[contadorPessoa] = pessoaCadastrar;
-            contadorPessoa++;
+            id = contadorPessoa;
+            try {
+                Pessoa pessoaCadastrar = new Pessoa(id, nome, idade, sexo, altura);
+                pessoas[contadorPessoa] = pessoaCadastrar;
+                contadorPessoa++;
+            } catch (Exception e) {
+                Menu.erro("Erro: Digite um numero válido!");
+                ConsoleUI.cadastrarPessoa();
+            }
+
         } else {
             contadorPessoa = 0;
-            addPessoa(nome, idade, sexo, altura);
+            id = contadorPessoa;
+            try {
+                Pessoa pessoaCadastrar = new Pessoa(id, nome, idade, sexo, altura);
+                pessoas[contadorPessoa] = pessoaCadastrar;
+                contadorPessoa++;
+            } catch (Exception e) {
+                Menu.erro("Digite um numero válido!");
+                ConsoleUI.cadastrarPessoa();
+            }
         }
     }
 
@@ -63,14 +80,25 @@ public class CadastroManager {
      * novos cadastros assim o cadastro mais antigo será sobreescrito pelo mais novo.
      */
     public static void addEndereco(String rua, Integer numero, String cep, String cidade, String estado, String pais) {
+        int id;
         if (contadorEndereco < capacidade) {
-            Integer id = contadorEndereco;
-            Endereco enderecoCadastrar = new Endereco(id, rua, numero, cep, cidade, estado, pais);
-            enderecos[contadorEndereco] = enderecoCadastrar;
-            contadorEndereco++;
+            id = contadorEndereco;
+            try {
+                Endereco enderecoCadastrar = new Endereco(id, rua, numero, cep, cidade, estado, pais);
+                enderecos[contadorEndereco] = enderecoCadastrar;
+                contadorEndereco++;
+            } catch (Exception e) {
+                Menu.erro("Erro: Digite um numero válido!");
+                ConsoleUI.cadastrarEndereco();
+            }
         } else {
             contadorEndereco = 0;
-            addEndereco(rua, numero, cep, cidade, estado, pais);
+            try {
+                addEndereco(rua, numero, cep, cidade, estado, pais);
+            } catch (Exception e) {
+                Menu.erro("Digite um numero válido!");
+                ConsoleUI.cadastrarEndereco();
+            }
         }
     }
 
@@ -80,14 +108,14 @@ public class CadastroManager {
                 switch (campo) {
                     case "nome" -> pessoa.setNome(novoValor);
                     case "idade" -> pessoa.setIdade(Integer.parseInt(novoValor));
-                    case "sexo" -> pessoa.setSexo(novoValor);
+                    case "sexo" -> pessoa.setSexo(novoValor.charAt(0));
                     case "altura" -> pessoa.setAltura(Double.parseDouble(novoValor));
                     default -> {
-                        System.out.println("O campo informado não existe.");
+                        Menu.erro("O campo informado não existe.");
                         return;
                     }
                 }
-                System.out.println("Atualização realizada com sucesso!");
+                Menu.sucesso("Atualização realizada com sucesso!");
                 return;
             }
         }
@@ -109,7 +137,7 @@ public class CadastroManager {
                         return;
                     }
                 }
-                System.out.println("Atualização realizada com sucesso!");
+                Menu.sucesso("Atualização realizada com sucesso!");
                 return;
             }
         }
@@ -121,18 +149,15 @@ public class CadastroManager {
         for (int i = 0; i < enderecos.length; i++) {
             if (pessoas[i] != null && pessoas[i].getId() == id) {
                 pessoas[i] = null;
-                System.out.println("Pessoa apagada com sucesso!");
                 return;
             }
         }
-
     }
 
     public static void deleteEndereco(int id) {
         for (int i = 0; i < enderecos.length; i++) {
             if (enderecos[i] != null && enderecos[i].getId() == id) {
                 enderecos[i] = null;
-                System.out.println("Endereço apagado com sucesso!");
                 return;
             }
         }

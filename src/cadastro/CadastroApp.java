@@ -22,12 +22,11 @@ public class CadastroApp {
      *                              do metodo ConsoleUI.limpar()
      */
     public static void main(String[] args) throws IOException, InterruptedException {
-        boolean sair;
+        boolean executando;
         ConsoleUI.limpar();
-        Menu.intro();
 
         do {
-            sair = ConsoleUI.iniciar();
-        } while (!sair);
+            executando = ConsoleUI.iniciar();
+        } while (!executando);
     }
 }

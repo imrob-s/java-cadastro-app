@@ -9,9 +9,12 @@ import cadastro.entities.Pessoa;
  * A largura das colunas são calculadas a partir da string mais larga de uma posição do vetor.
  */
 public class TabelaPrinter {
-    public static int[] largurasPessoas = new int[Pessoa.COLUNAS.length];
-    public static int[] largurasEnderecos = new int[Endereco.COLUNAS.length];
+    public static int[] larguraColPessoa = new int[Pessoa.COLUNAS.length];
+    public static int[] larguraColEndereco = new int[Endereco.COLUNAS.length];
     private static final int ESPACAMENTO = 2;
+    private static final String COR_TEXTO = "\033[1;38;05;231m"; // Branco
+    private static final String COR_FUNDO = "\033[48;05;243m"; // Cinza
+    private static final String RESET_COR = "\033[0m";
 
     /**
      * Exibe na tela uma tabela com as informações de um array do tipo Pessoa.
@@ -29,13 +32,14 @@ public class TabelaPrinter {
          * string desse array.
          */
         for (int i = 0; i < colunas.length; i++) {
-            largurasPessoas[i] = colunas[i].length();
+            larguraColPessoa[i] = colunas[i].length();
         }
         for (Pessoa pessoa : pessoas) {
             for (int i = 0; i < colunas.length; i++) {
                 if (pessoa != null) {
-                    if (pessoa.larguras[i] > largurasPessoas[i]) {
-                        largurasPessoas[i] = pessoa.larguras[i];
+                    pessoa.larguras[1] = pessoa.getNome().length();
+                    if (pessoa.larguras[i] > larguraColPessoa[i]) {
+                        larguraColPessoa[i] = pessoa.larguras[i];
                     }
                 } else {
                     break;
@@ -44,8 +48,8 @@ public class TabelaPrinter {
         }
         // Mostrando o titulo de cada coluna
         for (int i = 0; i < colunas.length; i++) {
-            System.out.printf("\033[1;38;05;231m\033[48;05;243m%-" +
-                    (largurasPessoas[i] + ESPACAMENTO) + "s\033[0m", colunas[i]);
+            System.out.printf("%s%s%-" + (larguraColPessoa[i] + ESPACAMENTO) + "s%s", COR_TEXTO, COR_FUNDO,
+                    colunas[i], RESET_COR);
         }
         System.out.println();
 
@@ -54,15 +58,15 @@ public class TabelaPrinter {
         a linha é pulada e não é exibida.
         Se não houver nenhuma informação para ser exibida será mostrado a mensagem "SEM CADASTROS"
         */
+        int qntCadastros = 0;
         for (Pessoa pessoa : pessoas) {
-            if (pessoas[0] == null) {
-                System.out.println("\033[38;05;9m\033[48;5;16m      SEM CADASTROS    \033[0m");
-                break;
-            } else if (pessoa != null) {
+            if (pessoa != null) {
+                qntCadastros++;
                 pessoa.mostrar();
                 System.out.println();
             }
         }
+        if (qntCadastros == 0) Menu.erro("SEM CADASTROS");
     }
 
     /**
@@ -81,13 +85,17 @@ public class TabelaPrinter {
          * string desse array.
          */
         for (int i = 0; i < colunas.length; i++) {
-            largurasEnderecos[i] = colunas[i].length();
+            larguraColEndereco[i] = colunas[i].length();
         }
         for (Endereco endereco : enderecos) {
             for (int i = 0; i < colunas.length; i++) {
                 if (endereco != null) {
-                    if (endereco.larguras[i] > largurasEnderecos[i]) {
-                        largurasEnderecos[i] = endereco.larguras[i];
+                    endereco.larguras[1] = endereco.getRua().length();
+                    endereco.larguras[4] = endereco.getCidade().length();
+                    endereco.larguras[5] = endereco.getEstado().length();
+                    endereco.larguras[6] = endereco.getPais().length();
+                    if (endereco.larguras[i] > larguraColEndereco[i]) {
+                        larguraColEndereco[i] = endereco.larguras[i];
                     }
                 } else {
                     break;
@@ -96,8 +104,8 @@ public class TabelaPrinter {
         }
         // Mostrando o titulo de cada coluna
         for (int i = 0; i < colunas.length; i++) {
-            System.out.printf("\033[1;38;05;231m\033[48;05;243m%-" +
-                    (largurasEnderecos[i] + ESPACAMENTO) + "s\033[0m", colunas[i]);
+            System.out.printf("%s%s%-" + (larguraColEndereco[i] + ESPACAMENTO) + "s%s",
+                    COR_TEXTO, COR_FUNDO, colunas[i], RESET_COR);
         }
         System.out.println();
 
@@ -106,14 +114,14 @@ public class TabelaPrinter {
         a linha é pulada e não é exibida.
         Se não houver nenhuma informação para ser exibida será mostrado a mensagem "SEM CADASTROS"
         */
+        int qntCadastros = 0;
         for (Endereco endereco : enderecos) {
-            if (enderecos[0] == null) {
-                System.out.println("\033[38;05;9m\033[48;5;16m       SEM CADASTROS        \033[0m");
-                break;
-            } else if (endereco != null) {
+            if (endereco != null) {
+                qntCadastros++;
                 endereco.mostrar();
                 System.out.println();
             }
         }
+        if (qntCadastros == 0) Menu.erro("SEM CADASTROS");
     }
 }
