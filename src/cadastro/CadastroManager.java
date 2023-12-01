@@ -28,6 +28,7 @@ public class CadastroManager {
         enderecos[2] = new Endereco(2, "Rua Dois", 789, "54321-876", "Rio Claro", "SP", "Brasil");
         enderecos[3] = new Endereco(3, "Rua Onze", 987, "87654-321", "Sao Paulo", "SP", "Brasil");
     }
+
     /**
      * Obtém a lista de pessoas cadastradas.
      *
@@ -36,6 +37,7 @@ public class CadastroManager {
     public static Pessoa[] getPessoas() {
         return pessoas;
     }
+
     /**
      * Obtém a lista de endereços cadastrados.
      *
@@ -113,6 +115,7 @@ public class CadastroManager {
             }
         }
     }
+
     /**
      * Atualiza informações de uma pessoa no cadastro.
      *
@@ -139,6 +142,7 @@ public class CadastroManager {
         }
         System.out.println("ID da pessoa não encontrado");
     }
+
     /**
      * Atualiza informações de um endereço no cadastro.
      *
@@ -168,6 +172,7 @@ public class CadastroManager {
         System.out.println("ID do endereço não encontrado");
 
     }
+
     /**
      * Exclui uma pessoa do cadastro.
      *
@@ -181,6 +186,7 @@ public class CadastroManager {
             }
         }
     }
+
     /**
      * Exclui um endereço do cadastro.
      *

@@ -3,8 +3,8 @@ package cadastro.entities;
 import cadastro.TabelaPrinter;
 
 /**
- * Essa classe modela a entidade Endereço e pussui os atributos id, rua, numero, cep, cidade, estado, pais.
- * também é possivel exibir na tela as informações de um objeto instanciado através do metodo mostrar().
+ * Esta classe modela a entidade Endereço e possui os atributos id, rua, numero, cep, cidade, estado, pais.
+ * Também é possível exibir na tela as informações de um objeto instanciado através do método mostrar().
  */
 public class Endereco {
     private final Integer id;
@@ -20,6 +20,17 @@ public class Endereco {
     private static final String COR_FUNDO = "\033[48;05;15m"; // Cinza Claro
     private static final String RESET_COR = "\033[0m";
 
+    /**
+     * Construtor da classe Endereco.
+     *
+     * @param id     Identificador único do endereço.
+     * @param rua    Nome da rua.
+     * @param numero Número do endereço.
+     * @param cep    CEP do endereço.
+     * @param cidade Nome da cidade.
+     * @param estado Nome do estado.
+     * @param pais   Nome do país.
+     */
     public Endereco(Integer id, String rua, Integer numero, String cep, String cidade, String estado, String pais) {
         this.id = id;
         this.rua = rua;
@@ -33,8 +44,7 @@ public class Endereco {
     }
 
     /**
-     * Esse método exibe na tela as informações do endereço instanciado.
-     * É comparado com o metodo toString() porém com uma estilização para tabela.
+     * Este método exibe na tela as informações do endereço instanciado.
      */
     public void mostrar() {
         final int ESPACAMENTO = 2;
@@ -52,6 +62,7 @@ public class Endereco {
         System.out.printf("%s%s%-" + (larguras[6] + ESPACAMENTO) + "s%s", COR_TEXTO, COR_FUNDO, pais, RESET_COR);
     }
 
+    // Getters e setters para os atributos da classe
     public Integer getId() {
         return id;
     }

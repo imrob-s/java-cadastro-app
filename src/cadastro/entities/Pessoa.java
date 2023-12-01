@@ -18,6 +18,15 @@ public class Pessoa {
     private static final String COR_FUNDO = "\033[48;05;15m"; // Cinza Claro
     private static final String RESET_COR = "\033[0m";
 
+    /**
+     * Construtor da classe Pessoa.
+     *
+     * @param id     Identificador único da pessoa.
+     * @param nome   Nome da pessoa.
+     * @param idade  Idade da pessoa.
+     * @param sexo   Sexo da pessoa (M ou F).
+     * @param altura Altura da pessoa.
+     */
     public Pessoa(Integer id, String nome, Integer idade, Character sexo, Double altura) {
         this.id = id;
         this.nome = nome;
@@ -29,7 +38,7 @@ public class Pessoa {
     }
 
     /**
-     * Esse método exibe na tela as informações da pessoa instanciada.
+     * Este método exibe na tela as informações da pessoa instanciada.
      */
     public void mostrar() {
         final int ESPACAMENTO = 2;
@@ -45,26 +54,56 @@ public class Pessoa {
         System.out.printf("%s%s%-" + (larguras[4] + ESPACAMENTO) + ".2f%s", COR_TEXTO, COR_FUNDO, altura, RESET_COR);
     }
 
+    /**
+     * Obtém o identificador único da pessoa.
+     *
+     * @return O identificador único da pessoa.
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     * Define o nome da pessoa.
+     *
+     * @param nome O novo nome da pessoa.
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    /**
+     * Define a idade da pessoa.
+     *
+     * @param idade A nova idade da pessoa.
+     */
     public void setIdade(Integer idade) {
         this.idade = idade;
     }
 
+    /**
+     * Define o sexo da pessoa.
+     *
+     * @param sexo O novo sexo da pessoa.
+     */
     public void setSexo(Character sexo) {
         this.sexo = sexo;
     }
 
+    /**
+     * Define a altura da pessoa.
+     *
+     * @param altura A nova altura da pessoa.
+     */
     public void setAltura(Double altura) {
         this.altura = altura;
     }
 
+    /**
+     * Obtém o nome da pessoa.
+     *
+     * @return O nome da pessoa.
+     */
     public String getNome() {
         return nome;
     }

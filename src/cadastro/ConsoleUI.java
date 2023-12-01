@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
+
 /**
  * A classe ConsoleUI fornece métodos para interação com o usuário por meio do console.
  */
@@ -17,12 +18,13 @@ public class ConsoleUI {
     private static final int EXIBIR_ENDERECOS = 4;
     private static final int SAIR = 0, VOLTAR = 0;
     private static final Scanner sc = new Scanner(System.in).useLocale(Locale.US).useDelimiter("\n");
+
     /**
      * Inicia a interface do console para interação com o usuário.
      *
      * @return True se o usuário escolher sair, False caso contrário.
-     * @throws IOException            Exceção lançada em caso de erro durante a interação.
-     * @throws InterruptedException   Exceção lançada em caso de erro durante a interação.
+     * @throws IOException          Exceção lançada em caso de erro durante a interação.
+     * @throws InterruptedException Exceção lançada em caso de erro durante a interação.
      */
     public static boolean iniciar() throws IOException, InterruptedException {
         Menu.principal();
@@ -96,6 +98,7 @@ public class ConsoleUI {
         }
         return false;
     }
+
     /**
      * Realiza o cadastro de uma nova pessoa com base nas informações fornecidas pelo usuário.
      */
@@ -112,6 +115,7 @@ public class ConsoleUI {
 
         CadastroManager.addPessoa(nome, idade, sexo, altura);
     }
+
     /**
      * Realiza o cadastro de um novo endereço com base nas informações fornecidas pelo usuário.
      */
@@ -137,6 +141,7 @@ public class ConsoleUI {
         }
         CadastroManager.addEndereco(rua, numero, cep, cidade, estado, pais);
     }
+
     /**
      * Atualiza informações de uma pessoa no cadastro com base no ID fornecido pelo usuário.
      *
@@ -190,6 +195,7 @@ public class ConsoleUI {
             Thread.sleep(2000);
         }
     }
+
     /**
      * Atualiza informações de um endereço no cadastro com base no ID fornecido pelo usuário.
      *
@@ -232,6 +238,7 @@ public class ConsoleUI {
             Thread.sleep(2000);
         }
     }
+
     /**
      * Exclui uma pessoa do cadastro com base no ID fornecido pelo usuário.
      *
@@ -249,6 +256,7 @@ public class ConsoleUI {
         Menu.sucesso("Cadastro apagado com sucesso!");
         Thread.sleep(2000);
     }
+
     /**
      * Exclui um endereço do cadastro com base no ID fornecido pelo usuário.
      *
@@ -279,6 +287,7 @@ public class ConsoleUI {
         else
             System.out.print("\033[H\033[2J");
     }
+
     /**
      * Valida e obtém um número inteiro da entrada do usuário.
      *
@@ -306,6 +315,7 @@ public class ConsoleUI {
         }
         return numero;
     }
+
     /**
      * Valida e obtém um número double/float da entrada do usuário.
      *
@@ -331,6 +341,7 @@ public class ConsoleUI {
         }
         return numero;
     }
+
     /**
      * Valida e obtém o sexo da entrada do usuário.
      *
@@ -351,6 +362,7 @@ public class ConsoleUI {
         }
         return sexo;
     }
+
     /**
      * Valida e obtém uma string não vazia da entrada do usuário.
      *
@@ -370,6 +382,7 @@ public class ConsoleUI {
         }
         return texto;
     }
+
     /**
      * Valida se o ID fornecido pelo usuário está presente no array especificado.
      *

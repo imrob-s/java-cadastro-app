@@ -21,6 +21,7 @@ public class Menu {
     private static final String COR_ERRO = "\033[38;05;9m\033[48;5;16m"; // Cor para erros apresentado no terminal
     private static final String COR_SUCESSO = "\033[38;05;10m\033[48;5;16m"; // Cor para sucessos apresentado no terminal
     private static final String RESET_COR = "\033[0m";
+
     /**
      * Apresenta uma mensagem de introdução colorida no terminal.
      * Utilizado codigo ANSI para estilização de cores
@@ -30,6 +31,7 @@ public class Menu {
         System.out.printf("%s%s  ### Bem Vindo ao CadastroApp ###  %s\n", CF_AMARELO, CT_PRETO, RESET_COR);
         System.out.printf("%s                                    %s\n", CF_AMARELO, RESET_COR);
     }
+
     /**
      * Exibe a mensagem de erro "OPÇÃO INVALIDA"
      * A mensagem é estilizada com cores
@@ -37,6 +39,7 @@ public class Menu {
     public static void opcaoInvalida() {
         System.out.printf("%s%s          OPÇÃO INVALIDA!          %s", CT_BRANCO, CF_VERMELHO, RESET_COR);
     }
+
     /**
      * Exibe o menu principal do aplicativo CadastroApp.
      *
@@ -54,10 +57,11 @@ public class Menu {
         System.out.printf("%s[ 0 ] - Sair%s", CT_VERMELHO, RESET_COR);
         System.out.printf("%s\n\nDigite uma opção: %s", CT_LARANJA_CLARO, RESET_COR);
     }
+
     /**
      * Exibe um menu CRUD (Criar, Ler, Atualizar, Excluir) para interação com o usuário.
      */
-    public static void menuCRUD(){
+    public static void menuCRUD() {
         System.out.println("\n\033[1;38;5;166m" +
                 "---------- MENU CADASTRO --------\033[0m");
         System.out.println("[ 1 ] - Novo cadastro");
@@ -66,14 +70,16 @@ public class Menu {
         System.out.printf("%s[ 0 ] - Voltar%s\n", CT_VERMELHO, RESET_COR);
         System.out.printf("%s\nDigite uma opção: %s", CT_LARANJA_CLARO, RESET_COR);
     }
+
     /**
      * Exibe um título personalizado.
      *
      * @param texto O texto a ser exibido como título.
      */
     public static void titulo(String texto) {
-        System.out.printf("%s%s     %s     %s\n",CT_BRANCO, CF_CINZA, texto.toUpperCase(), RESET_COR);
+        System.out.printf("%s%s     %s     %s\n", CT_BRANCO, CF_CINZA, texto.toUpperCase(), RESET_COR);
     }
+
     /**
      * Exibe uma mensagem de erro no formato padrão.
      *
@@ -82,6 +88,7 @@ public class Menu {
     public static void erro(String texto) {
         System.out.printf("%s     %s      %s\n", COR_ERRO, texto.toUpperCase(), RESET_COR);
     }
+
     /**
      * Exibe uma mensagem de sucesso no formato padrão.
      *
